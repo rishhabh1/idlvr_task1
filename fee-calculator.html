@@ -188,10 +188,10 @@
                               <label>How many helpers are required?</label>
                               <select class="dynamic-select">
                                  <option disabled selected>Select Number...</option>
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                                 <option>4</option>
+                                 <option>Yes - 1</option>
+                                 <option>Yes - 2</option>
+                                 <option>Yes - 3</option>
+                                 <option>Yes - 4</option>
                               </select>
                            </div>
                         </div>
@@ -228,10 +228,10 @@
                               <label>Number Of Flights</label>
                               <select class="dynamic-select">
                                  <option disabled selected>Select Number...</option>
-                                 <option>1</option>
-                                 <option>2</option>
-                                 <option>3</option>
-                                 <option>4</option>
+                                 <option>1 flight</option>
+                                 <option>2 flights</option>
+                                 <option>3 flights</option>
+                                 <option>4 flights</option>
                               </select>
                            </div>
                            <div class="form_field empty_box"></div>
@@ -395,8 +395,11 @@
             select.addEventListener('change', function() {
                 if (this.value) {
                     this.style.opacity = '1'; 
+                    this.style.fontWeight = '500';
+
                 } else {
                     this.style.opacity = '0.6';
+                    this.style.fontWeight = '400';
                 }
             });
         
