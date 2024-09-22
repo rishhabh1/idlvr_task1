@@ -950,6 +950,7 @@ button#calculate_again:hover{
 
     .toggle_nav{
         display: block;
+        cursor: pointer;
     }
     
     .header_left .search_bar,.header_inner>div{
