@@ -9,10 +9,13 @@ body,*{
 
 body{
     background-color: #F7F7F7;
+
+    color: #23201C;
 }
-input:focus{
+input:focus,select:focus{
     outline: none;
 }
+
 
 
 input::placeholder {
@@ -24,6 +27,91 @@ input::placeholder {
     color: #D6D6D6;
   }
 
+
+  select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  text-indent: 1px;
+  background: url(../images/chevron_right.svg);
+  background-repeat: no-repeat;
+  background-position: 97%;
+  background-size: 24px;
+}
+
+
+select:invalid {
+    color: red;
+  }
+  option[value=""][disabled] {
+    display: none;
+  }
+  option {
+    color: red;
+  }
+
+
+[type="radio"]:checked,
+[type="radio"]:not(:checked) {
+    position: absolute;
+    left: -9999px;
+}
+
+[type="radio"]:checked + label,
+[type="radio"]:not(:checked) + label
+{
+    position: relative;
+    padding-left: 28px;
+    cursor: pointer;
+    line-height: 20px;
+    display: inline-block;
+    color: #23201C;
+    font-weight: 400;
+}
+
+[type="radio"]:checked + label:before,
+[type="radio"]:not(:checked) + label:before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 18px;
+    height: 18px;
+    border: 1px solid #918F8D;
+    border-radius: 100%;
+    background:#fff;
+}
+
+[type="radio"]:checked + label:before{
+    border: 1px solid #F8D834;
+    background-color: #f7f7f4;
+}
+
+[type="radio"]:checked + label:after,
+[type="radio"]:not(:checked) + label:after {
+    content: '';
+    width: 12px;
+    height: 12px;
+    background: #F8D834;
+    position: absolute;
+    top: 4px;
+    left: 4px;
+    border-radius: 100%;
+    -webkit-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+[type="radio"]:not(:checked) + label:after {
+    opacity: 0;
+    -webkit-transform: scale(0);
+    transform: scale(0);
+}
+[type="radio"]:checked + label:after {
+    opacity: 1;
+    -webkit-transform: scale(1);
+    transform: scale(1);
+}
+
+
 header{
     background-color: #2F2C2C;
     padding: 22px 0 ;
@@ -31,7 +119,7 @@ header{
     top: 0;
     left: 0;
     width: 100%;
-    z-index: 1;
+    z-index: 3;
 }
 
 .header_inner{
@@ -118,7 +206,11 @@ padding-right: 83px;
     padding: 46px 27px 66px;
     display: flex;
     flex-direction: column;
+    overflow: auto;
+    gap: 20px   ;
     justify-content: space-between;
+    transition: all .5s;
+    z-index: 2;
 }
 
 .side_bar_outer ul{
@@ -170,20 +262,21 @@ padding-right: 83px;
 
 
 
-.orders_sec{
+.orders_sec,.fee_calc{
     margin:160px 60px 12px 170px;
+    /* max-width: 2000px; */
 }
 
 
 
-.orders_sec .sec_header{
+.sec_header{
     display: flex;
     justify-content: space-between;
     margin-bottom: 57px;
     align-items: center;
 }
 
-.orders_sec .sec_header h1{
+.sec_header h1{
 font-size: 32px;
 font-weight: 600;
 }
@@ -401,6 +494,315 @@ border-radius: 50%;
     background-color: #18C079;
 }
 
+.toggle_nav{
+    display: none;
+}
+
+.fee_calc .sec_header{
+    margin-bottom: 32px;
+}
+
+
+
+.delivery_detail_outer {
+    display: flex;
+    align-items: flex-start;
+    gap: 25px;
+}
+
+.delivery_detail_outer>div {
+    width: 100%;
+    border: 1px solid #F7F7F7;
+    background-color: #fff;
+    border-radius: 8px;
+    padding: 32px;
+}
+
+
+.delivery_detail_outer>div+div{
+    max-width: 370px;
+}
+
+.dotted_heading {
+    position: relative;
+    margin-bottom: 32px;
+}
+.dotted_heading span{
+    background-color: #fff;
+    position: relative;
+    z-index: 1;
+    padding-right: 8px;
+    font-weight: 600;
+    font-size: 14px;
+}
+.dotted_heading:after {
+    content: '';
+    border: 1px dashed #D6D6D6;
+    width: 100%;
+    position: absolute;
+    left: 0;
+    top: 11px;
+}
+
+.form_field_outer{
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+    margin-bottom: 24px;
+}
+
+.form_field_outer>div{
+    width: 100%;
+}
+.form_field_outer label{
+    display: block;
+    font-size: 14px;
+    font-weight: 600;
+    color: #23201C;
+    margin-bottom: 11px;
+}
+.form_field_outer input{
+    padding: 18px 20px;
+    width: 100%;
+    border: 1px solid #d3d2d2;
+    border-radius: 14px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #23201C;
+}
+
+.form_field_outer input::placeholder{
+    opacity: 0.6;
+    color: #23201C;
+    font-weight: 400;
+}
+.delivery_form>form>div{
+    margin-bottom: 32px;
+}
+.delivery_form>form>div:last-child,.delivery_form>form>div:last-child .form_field_outer{
+    margin: 0;
+}
+
+.selection_box{
+    display: flex;
+}
+.selection_box label{
+    margin: 0;
+}
+.selection_box>div {
+    width: 35%;
+}
+
+.form_field_outer select{
+    padding: 19px;
+    width: 100%;
+    border: 1px solid #d3d2d2;
+    border-radius: 14px;
+}
+
+.form_field_outer label img {
+    position: relative;
+    top: 3px;
+}
+
+.delivery_amount .heading{
+    margin-bottom: 24px;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.will_the_item label{
+    margin-bottom: 26px;
+}
+
+.delivery_status li{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.delivery_status li b{
+    font-weight: 500;
+}
+.delivery_status li p{
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.delivery_status li .imgb{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1.8px dashed #23201C;
+    position: relative;
+}
+
+
+.delivery_status li .imgb::after {
+    content: '';
+    height: 69%;
+    width: 0px;
+    border: 1px dashed #23201C;
+    position: absolute;
+    bottom: -74%;
+    /* z-index: -1; */
+}
+
+.delivery_status li:not(:first-child) .imgb svg path{
+    fill: #4f4d49;
+}
+.delivery_status{
+    margin-bottom: 32px;
+
+}
+
+.delivery_status li:first-child .imgb{
+background-color: #18C079;
+border-color: #18C079;
+}
+
+.delivery_status li:first-child .imgb::after {
+    border: 1px solid #18C079;
+}
+
+
+.delivery_status li .imgb::after {
+
+}
+.delivery_status li:last-child .imgb::after{
+    display: none;
+}
+
+.delivery_status li:not(:first-child)>img {
+    display: none;
+}
+
+.delivery_status li>img {
+    display: block;
+}
+
+.payment_details .heading{
+    margin-bottom: 8px;
+}
+
+.payment_details ul li{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 8px;
+    font-size: 14px;
+    color: #141414;
+}
+
+.payment_details ul li b{
+    font-weight: 600;
+}
+
+button#calculate_again{
+    display: none;
+    margin-bottom: 16px;
+}
+
+button#calculate_again:hover{
+    border: 1px solid #F8D834;
+    background-color: #F8D834;
+    transition: all .5s;
+}
+.calculate_btn_outer{
+    margin-top: 59px;
+}
+
+.calculate_btn_outer button{
+    padding: 20px 0;
+    width: 100%;
+    transition: all .5s;
+    
+    cursor: pointer;
+    border-radius: 12px;
+    border: 1px solid #23201C;
+    background-color: transparent;
+    font-size: 15px;
+    font-weight: 600;
+
+}
+
+#calculate_btn{
+    
+    border: none;
+    position: relative;
+    z-index: 22;  
+    padding: 0;
+}
+
+#calculate_btn span{
+    background-color: #D6D6D6;
+    border: 1px solid #D6D6D6;
+    display: block;
+    z-index: 1;
+    position: relative;
+    padding: 20px 0;
+    border-radius: 14px;
+    transition: all .5s;
+    line-height: 1.2;
+}
+
+.form_filled  #calculate_btn:hover{
+    opacity: .7;
+    transition: all .5s;
+}
+
+#calculate_btn:after{
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+    background-color: #BABABA;
+    border-radius: 12px;
+    
+    z-index: -1; /* Set the z-index lower than the button */
+}
+
+
+
+.form_filled #calculate_btn span{
+    background-color: #F8D834;
+    border: 1px solid #F8D834;
+    
+}
+
+.form_filled  #calculate_btn:after{
+    background-color: #DABE2E;
+}
+
+.form_filled button#calculate_again{
+    display: block;
+}
+
+.form_filled .delivery_status li:not(:first-child)>img{
+    display: block;
+}
+
+
+.form_filled  .delivery_status li .imgb::after{
+    border: 1px solid #18C079;
+
+}
+.form_filled  .delivery_status li .imgb{
+    background-color: #18C079;
+    border-color: #18C079;
+}
+
+.form_filled  .delivery_status li:not(:first-child)  svg path{
+    fill: #fff;
+}
+
+
 @media (max-width:1280px) {
     
     .orders_sec table tbody td{
@@ -434,6 +836,25 @@ border-radius: 50%;
 }
 
 
+@media (max-width:1200px) {
+    .delivery_detail_outer{
+        display: block;
+
+    }
+
+    .delivery_detail_outer>div{
+        border: none;
+        border-radius: 0;
+    }
+    .fee_calc{
+        margin-bottom: 20px;
+    }
+
+    .delivery_detail_outer>div+div{
+        max-width: 100%;
+    }
+
+}
 @media (max-width:991px) {
 
     header{
@@ -451,7 +872,7 @@ border-radius: 50%;
         gap: 23px;
     }
  
-    .orders_sec {
+    .orders_sec,.fee_calc{
         margin: 126px 43px 11px 146px;
     }
 
@@ -473,7 +894,7 @@ border-radius: 50%;
 
 @media (max-width:767px) {
     header{
-        padding: 38px 0;
+        padding: 30px 0;
     }
 
     .header_inner{
@@ -526,14 +947,16 @@ border-radius: 50%;
     width: 24px;
     height: 25px;
     }
-    .side_bar_outer{
-        display: none;
+
+    .toggle_nav{
+        display: block;
     }
+    
     .header_left .search_bar,.header_inner>div{
         width: auto;
     }
 
-    .orders_sec{
+    .orders_sec,.fee_calc{
         margin: 140px 20px 0;
     }
 
@@ -541,11 +964,11 @@ border-radius: 50%;
         padding: 16px;
     }
 
-    .orders_sec .sec_header h1{
+    .sec_header h1{
         font-size: 18px;
     }
 
-    .orders_sec .sec_header{
+    .sec_header{
         margin-bottom: 14px;
     }
     .orders_sec .order_number{
@@ -617,6 +1040,59 @@ border-radius: 50%;
         padding: 24px;
         white-space: nowrap;
     }
+
+    .fee_calc{
+        margin: 155px 0 0;
+    }
+    .fee_calc .sec_header{
+        margin: 0 20px 37px;
+    }
+
+    .delivery_detail_outer>div{
+        padding: 32px 20px;
+    }
+    .form_field_outer{
+        flex-direction: column;
+        gap: 24px;
+    }
+
+
+.does_your_order_outer{
+    gap: 34px !important;
+}
+
+.will_the_item label{
+    margin-bottom: 17px;
+}
+.form_field.empty_box{
+    display: none;
+}
+
+.delivery_form{
+    padding-bottom: 0px !important;
+}
+
+.delivery_status{
+    margin-bottom: 24px;
+}
+
+.calculate_btn_outer{
+    margin-top: 24px;
+}
+.delivery_amount{
+    padding-bottom: 28px !important;
+}
+
+.side_bar_outer{
+    left: -100%;
+    transition: all .5s;
+}
+
+.sidebar_active .side_bar_outer{
+    left: 0;
+    /* transition: all .5s; */
+}
+
 }
 
 
